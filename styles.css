@@ -20,7 +20,7 @@ line-height: 1.6;
 
 /* 서론 구역 */
 .title_abstract {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 40px auto 40px auto;
     padding: 40px 20px;
   }
@@ -29,7 +29,7 @@ line-height: 1.6;
   .main-content,
   .main-content2,
   .main-content3 {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 30px auto 30px auto; /* 섹션 간 충분한 공간 확보 */
     padding: 60px 30px;
     border-top: 1px solid var(--border); /* 구분감 주기 */
@@ -210,7 +210,7 @@ margin: 0 0 8px 0;
 }
 
 .main-content {
-max-width: 1100px;
+max-width: 900px;
 margin: 0 auto;
 padding: 40px 20px;
 }
@@ -406,15 +406,15 @@ accent-color: var(--primary);
 /* 네비게이션 메뉴 */
 .navigation {
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border);
 }
@@ -423,8 +423,9 @@ accent-color: var(--primary);
   text-decoration: none;
   color: var(--dark-text);
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 0.9em;
 }
 
 .navigation a:hover {
@@ -440,14 +441,15 @@ accent-color: var(--primary);
 /* 모바일에서의 네비게이션 스타일 */
 @media (max-width: 768px) {
   .navigation {
-    top: 5px;
-    right: 5px;
-    padding: 5px 8px;
+    top: 3px;
+    right: 3px;
+    padding: 4px 6px;
+    gap: 4px;
   }
   
   .navigation a {
-    font-size: 0.85em;
-    padding: 3px 6px;
+    font-size: 0.75em;
+    padding: 2px 4px;
     white-space: nowrap;
   }
 }
