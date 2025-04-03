@@ -1,0 +1,246 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lakh MIDI Dataset</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+
+<body>
+  <!-- 상단 네비게이션 메뉴 -->
+  <nav class="navigation">
+    <a href="#title_abstract">Title & Abstract</a>
+    <a href="#duplicates">Detected duplicates in the LMD</a>
+    <a href="#types">Duplicate types in the paper</a>
+    <a href="#non-duplicates">Non-duplicate examples</a>
+  </nav>
+
+  <div id="title_abstract" class="title_abstract">
+  <h1>On the de-duplication of the Lakh MIDI dataset</h1>
+  <h2>Anonymous submission to ISMIR 2025</h2>
+    <h4>
+      This study investigates the dataset duplication issues regarding Lakh MIDI Dataset (LMD), one of the largest publicly available sources in the symbolic music domain. 
+      To find and evaluate the best retrieval method for duplicated data, we employed the Clean MIDI subset of the LMD as a benchmark test set, in which different versions of the same songs are grouped together. 
+      We first evaluated rule-based approaches and previous symbolic music retrieval models for de-duplication and also investigated with a contrastive learning-based BERT model with various augmentations to find duplicate files. 
+      As a result, we propose <a style="color: var(--accent);" href=https://anonymous.4open.science/r/LMD_Deduplication-4208>three different versions of the filtered list of LMD</a>, which filters out at least 38,134 samples in the most conservative settings among 178,561 files.    
+    </h4>
+  </div>
+
+  <div id="duplicates" class="main-content">
+    <h2>Detected Duplicates in the LMD</h2>
+    <h4>Query from Clean subset of LMD, using the proposed configuration (CAugBERT U CLaMP-1024).
+    Currently, <b style="color: var(--accent)">the top 50 queries with the highest number of duplicates</b> can be played in this page.
+    You can scroll left and right in the MIDI visualizer.</h4>
+    <div class="query-retrieved-container">
+      <div class="select-container"> 
+        <select id="artistSelect" onchange="updateMidiList()">
+          <option value="">Select Artist - Song</option>
+        </select>
+        <select id="midiSelect" onchange="updateVisualizer()">
+          <option value="">Select detected duplicate</option>
+        </select>
+        </div>
+      
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <h4>Survived file (largest note count)</h4>
+          <p class="file-path"></p>
+          <div class="loading-message">Please select an artist - song sample.</div>
+          <midi-visualizer id="originVisualizer"></midi-visualizer>
+          <midi-player
+            id="originPlayer"
+            sound-font visualizer="#originVisualizer">
+          </midi-player>
+        </div>
+        <div class="comparison-item">
+          <h4>Detected duplicate file</h4>
+          <p class="file-path"></p>
+          <div class="loading-message">Please select a detected duplicate sample.</div>
+          <midi-visualizer id="retrievedVisualizer"></midi-visualizer>
+          <midi-player
+            id="retrievedPlayer"
+            sound-font visualizer="#retrievedVisualizer">
+          </midi-player>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="types" class="main-content2">
+    <h2>Duplicate Types in the Paper</h2>
+    
+    <h3>Hard Duplicates</h3>
+    <h4>We define hard duplication as files with <b style="color: var(--accent)">exactly same shared parts of arrangements</b> with minor differences. 
+      The differences between these hard duplicates include instrument mapping, instrument order, tempo, offset of the beginning, file length, missing tracks, or alterations at the note level—such as pitch, duration, or velocity. Melodic variations may also appear, such as added ornamentation or changes in the number of chord tones played by a specific instrument.</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">4/46f0bec94ec9468e7fa0d9162832d185.mid</p>
+        <midi-visualizer id="originHardVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/4/46f0bec94ec9468e7fa0d9162832d185/4/46f0bec94ec9468e7fa0d9162832d185_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originHardPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/4/46f0bec94ec9468e7fa0d9162832d185/4/46f0bec94ec9468e7fa0d9162832d185_1.000.mid"
+          sound-font visualizer="#originHardVisualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">6/656d7bde3a2cf7dd2531856f821bb9d2.mid</p>
+        <midi-visualizer id="retrievedHardVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/4/46f0bec94ec9468e7fa0d9162832d185/6/656d7bde3a2cf7dd2531856f821bb9d2_0.907.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedHardPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/4/46f0bec94ec9468e7fa0d9162832d185/6/656d7bde3a2cf7dd2531856f821bb9d2_0.907.mid"
+          sound-font visualizer="#retrievedHardVisualizer">
+        </midi-player>
+      </div>
+    </div>
+
+    <br></br>
+    <h3>Soft Duplicates</h3>
+    <h4>In soft duplication, MIDI files <b style="color: var(--accent)">preserve essential musical elements</b> such as melody, harmony, ornaments, and instrumentation, <b style="color: var(--accent)">but differ in arrangement style</b>, reflecting the diverse skills and styles of individual arrangers. 
+      Such duplication includes cases where the core melody remains unchanged or similar, but accompaniment styles (e.g., arpeggio, waltz), pitch ranges, key transpositions, and overall structure vary considerably. In cases of extremely different arrangements, these variations might lead a listener to perceive them as distinct songs.</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">d/dd5c535dbbf10b64763ec057cf14a544.mid</p>
+        <midi-visualizer id="originSoftVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/d/dd5c535dbbf10b64763ec057cf14a544/d/dd5c535dbbf10b64763ec057cf14a544_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originSoftPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/d/dd5c535dbbf10b64763ec057cf14a544/d/dd5c535dbbf10b64763ec057cf14a544_1.000.mid"
+          sound-font visualizer="#originSoftVisualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">d/d1f3909d044439d013515b99fa6db5ca.mid</p>
+        <midi-visualizer id="retrievedSoftVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/d/dd5c535dbbf10b64763ec057cf14a544/d/d1f3909d044439d013515b99fa6db5ca_0.886.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedSoftPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/d/dd5c535dbbf10b64763ec057cf14a544/d/d1f3909d044439d013515b99fa6db5ca_0.886.mid"
+          sound-font visualizer="#retrievedSoftVisualizer">
+        </midi-player>
+      </div>
+    </div>
+
+    <br><br>
+    </div>
+    <div id="non-duplicates" class="main-content3">
+    <h2> Non-duplicate Examples</h2>
+    <h4> Here, we present non-duplicate examples from 100 randomly selected queries in LMD-full, as described in Section 7 of the paper. </h4>
+    <h3>Similar Examples</h3>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">b/b706dec12991e3680a65d5f689848ead.mid</p>
+        <midi-visualizer id="originSimilarVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/b/b706dec12991e3680a65d5f689848ead/b/b706dec12991e3680a65d5f689848ead_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originSimilarPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/b/b706dec12991e3680a65d5f689848ead/b/b706dec12991e3680a65d5f689848ead_1.000.mid"
+          sound-font visualizer="#originSimilarVisualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">b/bbabcfcac516c0b021799807aa8ddacf.mid</p>
+        <midi-visualizer id="retrievedSimilarVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/b/b706dec12991e3680a65d5f689848ead/b/bbabcfcac516c0b021799807aa8ddacf_0.947.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedSimilarPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/b/b706dec12991e3680a65d5f689848ead/b/bbabcfcac516c0b021799807aa8ddacf_0.947.mid"
+          sound-font visualizer="#retrievedSimilarVisualizer">
+        </midi-player>
+      </div>
+    </div>
+
+    <br></br>
+    <h3>Irrelevant Examples</h3>
+    <h4>Case #1: Similar Genre</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">3/3c67e89d92755cae483e97bd5992c07a.mid</p>
+        <midi-visualizer id="originIrrelevant2Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/3c67e89d92755cae483e97bd5992c07a/3/3c67e89d92755cae483e97bd5992c07a_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originIrrelevant2Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/3c67e89d92755cae483e97bd5992c07a/3/3c67e89d92755cae483e97bd5992c07a_1.000.mid"
+          sound-font visualizer="#originIrrelevant2Visualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">5/577bb0d0b7e67f10a12d09aa3a8d6392.mid</p>
+        <midi-visualizer id="retrievedIrrelevant2Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/3c67e89d92755cae483e97bd5992c07a/5/577bb0d0b7e67f10a12d09aa3a8d6392_0.947.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedIrrelevant2Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/3c67e89d92755cae483e97bd5992c07a/5/577bb0d0b7e67f10a12d09aa3a8d6392_0.947.mid"
+          sound-font visualizer="#retrievedIrrelevant2Visualizer">
+        </midi-player>
+      </div>
+    </div>
+
+    <br></br>
+    <h4>Case #2: Fugue-like</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">5/51b73bc08704282bbf655862af73b038.mid</p>
+        <midi-visualizer id="originIrrelevantVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/5/51b73bc08704282bbf655862af73b038/5/51b73bc08704282bbf655862af73b038_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originIrrelevantPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/5/51b73bc08704282bbf655862af73b038/5/51b73bc08704282bbf655862af73b038_1.000.mid"
+          sound-font visualizer="#originIrrelevantVisualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">4/4093667708ad8862fc26fffab022a8f4.mid</p>
+        <midi-visualizer id="retrievedIrrelevantVisualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/5/51b73bc08704282bbf655862af73b038/4/4093667708ad8862fc26fffab022a8f4_0.947.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedIrrelevantPlayer"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/5/51b73bc08704282bbf655862af73b038/4/4093667708ad8862fc26fffab022a8f4_0.947.mid"
+          sound-font visualizer="#retrievedIrrelevantVisualizer">
+        </midi-player>
+      </div>
+    </div>
+    <br></br>
+
+    <h4>Case #3: Hymn-like</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">3/361444618e940c496fe23c9e07cc9bac.mid</p>
+        <midi-visualizer id="originIrrelevant4Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/361444618e940c496fe23c9e07cc9bac/3/361444618e940c496fe23c9e07cc9bac_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originIrrelevant4Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/361444618e940c496fe23c9e07cc9bac/3/361444618e940c496fe23c9e07cc9bac_1.000.mid"
+          sound-font visualizer="#originIrrelevant4Visualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">3/3a563a18fb3491e665b13fdbd39103df.mid</p>
+        <midi-visualizer id="retrievedIrrelevant4Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/361444618e940c496fe23c9e07cc9bac/3/3a563a18fb3491e665b13fdbd39103df_0.976.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedIrrelevant4Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/3/361444618e940c496fe23c9e07cc9bac/3/3a563a18fb3491e665b13fdbd39103df_0.976.mid"
+          sound-font visualizer="#retrievedIrrelevant4Visualizer">
+        </midi-player>
+      </div>
+    </div>
+    <br></br>
+
+    <h4>Case #4: Single Instrument Short Segment</h4>
+    <div class="comparison-container2">
+      <div class="comparison-item2">
+        <p class="file-path">f/fce8d7c34280be172b478c14f1f50707.mid</p>
+        <midi-visualizer id="originIrrelevant3Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/f/fce8d7c34280be172b478c14f1f50707/f/fce8d7c34280be172b478c14f1f50707_1.000.mid"></midi-visualizer>
+        <midi-player
+          id="originIrrelevant3Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/f/fce8d7c34280be172b478c14f1f50707/f/fce8d7c34280be172b478c14f1f50707_1.000.mid"
+          sound-font visualizer="#originIrrelevant3Visualizer">
+        </midi-player>
+      </div>
+      <div class="comparison-item2">
+        <p class="file-path">a/a10822111fa9259072bcf24e097a5a60.mid</p>
+        <midi-visualizer id="retrievedIrrelevant3Visualizer" src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/f/fce8d7c34280be172b478c14f1f50707/a/a10822111fa9259072bcf24e097a5a60_0.993.mid"></midi-visualizer>
+        <midi-player
+          id="retrievedIrrelevant3Player"
+          src="demo_src/ours_0.93_with_clamp_0.87_listening_samples/f/fce8d7c34280be172b478c14f1f50707/a/a10822111fa9259072bcf24e097a5a60_0.993.mid"
+          sound-font visualizer="#retrievedIrrelevant3Visualizer">
+        </midi-player>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script> 
+</body>
+</html>
