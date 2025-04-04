@@ -173,7 +173,7 @@
     ]
   },
   "The Platters__Only You": {
-    "survived_file": "1__119e9d3b053e67603e420f0351daeb85",
+    "survived_file": "5__5ad65950e782cb1af00fb3da433b96ed",
     "remove_file_list": [
       "4__4158a402b9c4d6c422e3cb212d3a5ad6",
       "b__b7f998669077fc95addd3cad1ea4de28",
@@ -189,7 +189,7 @@
       "c__c856618c5726adf6441fc4d4333e161f",
       "9__9f972545a001c52e5216903c9db477a3",
       "7__7afcd32050d2722ff396ad447ebbd520",
-      "5__5ad65950e782cb1af00fb3da433b96ed",
+      "1__119e9d3b053e67603e420f0351daeb85",
       "a__a54bf3242c1aba79319cb442d800d63a",
       "e__e7b0eee6d2fba724dce23933b045a022",
       "9__9234c2b1c3680d192b24e06b99f25a69",
@@ -277,8 +277,9 @@
     ]
   },
   "Queen__We Are The Champions": {
-    "survived_file": "6__689be1b9637f7b5c1b20992062ec2431",
+    "survived_file": "8__845ed8be5703fed3c48f89aef73b250a",
     "remove_file_list": [
+      "6__689be1b9637f7b5c1b20992062ec2431",
       "4__4c67b066cbfb5b30bb046111e3ea6957",
       "9__9b840ffe3a7daac4ebdb978276a97603",
       "4__44915ddbda37e8d4883a9ca4419aed7c",
@@ -286,7 +287,6 @@
       "d__d83c7c3b191c26fee8e8316c6a51d782",
       "e__e4c89aaf7265e407757880d127834f95",
       "a__a9211b5b1ebab5229cb82949d9d96c3b",
-      "8__845ed8be5703fed3c48f89aef73b250a",
       "6__6723a65b641d110464e25413bb9094e4",
       "8__8db658ed41ba8da53a3b0fa920dbbbef",
       "b__b93b6686f468f13b49d73981b51293da",
@@ -536,11 +536,11 @@
     ]
   },
   "Fugees__Killing Me Softly": {
-    "survived_file": "5__5ccc3a60fdb0c2aee9b29ac66a45bfa2",
+    "survived_file": "3__324bc83f1fc0e8220bacf9ba2528e51c",
     "remove_file_list": [
       "0__0957de1c3be4ce72df0aa05e22bc7d34",
       "e__ebadb8e10eee68dc0abfbc6638bf40ce",
-      "3__324bc83f1fc0e8220bacf9ba2528e51c",
+      "5__5ccc3a60fdb0c2aee9b29ac66a45bfa2",
       "e__ef32e0fce3fa0a9b2851eac343164e5e",
       "8__89feff22330c4a11e5bc05a6861579a2",
       "b__baebfc6aec2b4ff8f2bbb091f7359099",
@@ -635,7 +635,6 @@
       "a__ad25a4c6467f070ba8bf337990e443df",
       "c__cee9366fb781ff1f9a51215a88215680",
       "8__87f96e73a234fb870060518bde8b4f15",
-      "0__05b7e5e4f4ee065f05a4ab0b1f6b56d7",
       "f__fc739fea982d31e0674d419c593cb303",
       "2__2c01392a09334d27d42cf1499912d77a",
       "4__4782ca79229a6fe90190fb84758deb82",
@@ -1069,7 +1068,6 @@
   "The Beatles__Love Me Do": {
     "survived_file": "3__3657d29a122f7e3d123108f67fa48019",
     "remove_file_list": [
-      "0__0b5f5e5512c03c17d34ae586d4fbe06a",
       "7__746afa723a3f81e880afddaea340689b",
       "b__bd9f46608dd1604fdd77a0cd86082daa",
       "9__98b7b924eb5c5fcfbd6eb6b050dce7f8",
@@ -1415,10 +1413,8 @@
       "9__9b8f0d907419e618b69623476fa01bc8",
       "a__a9095ae4471fc6592d2d3f93a9e4f148",
       "d__dac43b4a30cd40c83333b96d01d819d5",
-      "1__1358c4a4ced12029da81ce78933151f0",
       "5__5eaffa0bf43702e4fff7de1ee368c2da",
       "a__a7a28b3a9250304a0ff520a6aea11d98",
-      "1__1bb43de3d0bb68e0e360519ca37e0fa4",
       "6__64c3e898e9632f1cba6fbf094f5ed8b3",
       "f__f9995ea3f749f2a7bee1e951cfc55b79",
       "f__fead27a3472fd3e29bcb76ab79a6b97d"
