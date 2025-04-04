@@ -15,8 +15,8 @@ async function loadFileList() {
   try {
     console.log('Loading file list...');
     const filePath = currentFileType === 'top50' 
-      ? 'demo_src/ours_0.93_with_clamp_0.87_removing_list_as_names_lmd_clean_lmd_full_top_50_duplicates.json'
-      : 'demo_src/ours_0.93_with_clamp_0.87_removing_list_as_names_lmd_clean_lmd_full.json';
+      ? 'demo_src/ours_0.99_with_clamp_0.99_removing_list_as_names_lmd_clean_lmd_full_top_50_duplicates.json'
+      : 'demo_src/ours_0.99_with_clamp_0.99_removing_list_as_names_lmd_clean_lmd_full.json';
     
     const response = await fetch(filePath);
     fileList = await response.json();
